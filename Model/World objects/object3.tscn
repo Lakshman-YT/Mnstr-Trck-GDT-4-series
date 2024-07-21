@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://cy2jeiwggtaqb"]
+
+[ext_resource type="Texture2D" uid="uid://bh25elbtww3u6" path="res://Env textures/ground/yellow.jpg" id="1_aogep"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0j0gk"]
+albedo_texture = ExtResource("1_aogep")
+uv1_triplanar = true
+uv1_world_triplanar = true
+
+[node name="CSGSphere3D" type="CSGSphere3D"]
+radius = 0.697151
+material = SubResource("StandardMaterial3D_0j0gk")
