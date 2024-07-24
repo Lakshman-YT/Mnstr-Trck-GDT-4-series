@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://dfdn4vcoa1tay"]
+
+[ext_resource type="Texture2D" uid="uid://p5ay6g0on1lb" path="res://Env textures/ground/green.jpg" id="1_86vn2"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_e64lc"]
+top_radius = 0.15
+bottom_radius = 0.6
+height = 15.0
+radial_segments = 20
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jewlx"]
+albedo_texture = ExtResource("1_86vn2")
+uv1_triplanar = true
+uv1_world_triplanar = true
+
+[node name="CSGMesh3D" type="CSGMesh3D"]
+transform = Transform3D(-2.79753e-08, -1, 0, 0.64, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("CylinderMesh_e64lc")
+material = SubResource("StandardMaterial3D_jewlx")
