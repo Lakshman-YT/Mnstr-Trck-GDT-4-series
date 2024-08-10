@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://d3m4frnuj5s12"]
+
+[ext_resource type="Texture2D" uid="uid://cjh6oddt3x0tx" path="res://Env textures/ground/white.jpg" id="1_g0v00"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_2p8j8"]
+height = 11.091
+radial_segments = 20
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ppx2y"]
+albedo_texture = ExtResource("1_g0v00")
+uv1_triplanar = true
+uv1_world_triplanar = true
+
+[node name="CSGMesh3D" type="CSGMesh3D"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 0.34, 0, -1, -1.48619e-08, 0, 0, 0)
+mesh = SubResource("CylinderMesh_2p8j8")
+material = SubResource("StandardMaterial3D_ppx2y")
