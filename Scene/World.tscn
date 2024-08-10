@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://cy1k75yj8hcua"]
+[gd_scene load_steps=19 format=3 uid="uid://cy1k75yj8hcua"]
 
 [ext_resource type="PackedScene" uid="uid://bdbchclmltc51" path="res://Scene/monter_base_car.tscn" id="1_g5607"]
 [ext_resource type="Texture2D" uid="uid://djac0ucqhhl1b" path="res://Env textures/ground/black.jpg" id="1_qo4vy"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://bdcy4x687tkh3" path="res://Env textures/ground/pp.jpg" id="7_3vb4i"]
 [ext_resource type="PackedScene" uid="uid://c4axagm62l0uu" path="res://Model/World objects/complex_object1.tscn" id="7_q7uvy"]
 [ext_resource type="PackedScene" uid="uid://bjewdbi5nmyy5" path="res://Model/World objects/complex_object2.tscn" id="8_aafxv"]
+[ext_resource type="PackedScene" uid="uid://bk20gsg1sko44" path="res://Scene/camera_rig.tscn" id="10_renaw"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_da1fv"]
 size = Vector3(200, 1, 200)
@@ -29,6 +30,9 @@ sky_material = SubResource("ProceduralSkyMaterial_j64ln")
 [sub_resource type="Environment" id="Environment_ac4c4"]
 background_mode = 2
 sky = SubResource("Sky_x0h6m")
+ssao_radius = 1.5
+ssao_intensity = 0.6
+ssao_power = 32.7
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_klsna"]
 albedo_texture = ExtResource("7_3vb4i")
@@ -54,14 +58,11 @@ shape = SubResource("BoxShape3D_sjrol")
 [node name="MonterBaseCar" parent="." instance=ExtResource("1_g5607")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.09078, 0)
 
-[node name="Camera3D" type="Camera3D" parent="MonterBaseCar"]
-transform = Transform3D(1, 0, 0, 0, 0.992036, 0.125957, 0, -0.125957, 0.992036, 0, 2.97591, 5.93187)
-
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_ac4c4")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.968925, 0.247354, 7.37173e-09, 0.0868274, -0.340117, 0.936366, 0.231614, -0.907269, -0.351025, 0, 46.6832, -17.4889)
+transform = Transform3D(0.958382, 0.150897, 0.242349, -0.221166, -0.144353, 0.964493, 0.180523, -0.977953, -0.104972, 0, 9.14761, -17.4889)
 
 [node name="scene" type="Node3D" parent="."]
 
@@ -387,3 +388,6 @@ use_collision = true
 [node name="CSGMesh3D4" parent="scene/corners" instance=ExtResource("6_33dec")]
 transform = Transform3D(-8.74228e-09, 0, -6.725, 0, 3, 0, 0.2, 0, -2.93959e-07, 0.123616, 6.95825, -100.6)
 use_collision = true
+
+[node name="CameraRig" parent="." instance=ExtResource("10_renaw")]
+_camTarget = NodePath("../MonterBaseCar")

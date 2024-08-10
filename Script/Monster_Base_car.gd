@@ -21,11 +21,41 @@ var steer_target = 0
 @export var FrontLeftMarker: Marker3D
 @export var FrontRightMarker: Marker3D
 
+@onready var arrow = $Control/HBoxContainer/Sprite2D/arrow
+@onready var label = $Control/HBoxContainer/Sprite2D/arrow2
+@onready var healthbar = $Control/TextureProgressBar
+
+var last_speed = 0
+var health = 100
 var fwd_mps : float
 var speed: float
+var break_ramp = true
 
 func _ready():
+	healthbar.value = health
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+
+func _process(delta):
+	calculate_dash(round(speed*3.8))
+	set_arrow_rotation(round(speed*3.8),delta)
+
+func calculate_dash(abc):
+	var a  = last_speed - abc
+	if a > 10 :
+		if a > 15:
+			health -= randi_range(2 , 6)
+			healthbar.value = health
+	last_speed = abc
+	
+func set_arrow_rotation(speed,delta):
+	label.text = str(speed)
+	var min_speed = 0
+	var max_speed = 100
+	var min_rotation = -131
+	var max_rotation = 119
+	speed = clamp(speed, min_speed, max_speed)	
+	var rotation = lerp(min_rotation, max_rotation, float(speed - min_speed) / float(max_speed - min_speed))
+	arrow.rotation_degrees = lerp(arrow.rotation_degrees , rotation , 2 *delta)
 	
 func _physics_process(delta):
 	speed = linear_velocity.length()* 30 *delta
@@ -70,6 +100,7 @@ func process_steer(delta):
 	steering = move_toward(steering, steer_target, STEER_SPEED * delta)
 
 func process_brake():
+	toggle_ramp()
 	if Input.is_action_pressed("ui_select"):
 		brake=0.5
 		BackLeftWheel.wheel_friction_slip=2
@@ -91,6 +122,18 @@ func flip():
 	if rotation_amount != 0:
 		var rotation_vec = global_transform.basis.x * rotation_amount
 		apply_torque(rotation_vec)
+
+func toggle_ramp():
+	if Input.is_action_just_pressed("ramp") and break_ramp:
+		$ramp/hinges/left_door_break.queue_free()
+		$ramp/hinges/right_door_break.queue_free()
+		$ramp/hinges/front_center_break.queue_free()
+		break_ramp = false
+		# just for random back ramp clip
+		if randf() > 0.5 :
+			$ramp/hinges/back_left.queue_free() 
+		else:
+			$ramp/hinges/back_center.queue_free()
 
 func suspense():
 	update_bone_pose("frontright", FrontRightMarker, FrontLeftWheel)

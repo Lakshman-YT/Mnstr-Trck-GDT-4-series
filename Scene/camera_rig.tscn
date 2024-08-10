@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://bk20gsg1sko44"]
+
+[ext_resource type="Script" path="res://Script/CameraRig.gd" id="1_6m16a"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_6m88p"]
+
+[node name="CameraRig" type="Node3D"]
+script = ExtResource("1_6m16a")
+maxZoom = 8.0
+minZoom = 8.0
+
+[node name="SpringArm" type="SpringArm3D" parent="."]
+shape = SubResource("SphereShape3D_6m88p")
+
+[node name="Camera3D" type="Camera3D" parent="SpringArm"]
