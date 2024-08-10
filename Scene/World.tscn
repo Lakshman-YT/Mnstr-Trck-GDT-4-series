@@ -1,0 +1,403 @@
+[gd_scene load_steps=19 format=3 uid="uid://cy1k75yj8hcua"]
+
+[ext_resource type="PackedScene" uid="uid://bdbchclmltc51" path="res://Scene/monter_base_car.tscn" id="1_g5607"]
+[ext_resource type="Texture2D" uid="uid://djac0ucqhhl1b" path="res://Env textures/ground/black.jpg" id="1_qo4vy"]
+[ext_resource type="PackedScene" uid="uid://d3m4frnuj5s12" path="res://Model/World objects/object1.tscn" id="3_uwlmg"]
+[ext_resource type="PackedScene" uid="uid://dfdn4vcoa1tay" path="res://Model/World objects/objec2.tscn" id="4_a5h5x"]
+[ext_resource type="PackedScene" uid="uid://cy2jeiwggtaqb" path="res://Model/World objects/object3.tscn" id="5_i08ds"]
+[ext_resource type="PackedScene" uid="uid://4vb3hrt4fcac" path="res://Model/World objects/object4.tscn" id="6_33dec"]
+[ext_resource type="Texture2D" uid="uid://bdcy4x687tkh3" path="res://Env textures/ground/pp.jpg" id="7_3vb4i"]
+[ext_resource type="PackedScene" uid="uid://c4axagm62l0uu" path="res://Model/World objects/complex_object1.tscn" id="7_q7uvy"]
+[ext_resource type="PackedScene" uid="uid://bjewdbi5nmyy5" path="res://Model/World objects/complex_object2.tscn" id="8_aafxv"]
+[ext_resource type="PackedScene" uid="uid://bk20gsg1sko44" path="res://Scene/camera_rig.tscn" id="10_renaw"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_da1fv"]
+size = Vector3(200, 1, 200)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i3f36"]
+albedo_texture = ExtResource("1_qo4vy")
+uv1_triplanar = true
+uv1_world_triplanar = true
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_sjrol"]
+size = Vector3(200, 1, 200)
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_j64ln"]
+sky_top_color = Color(0.419608, 0.54902, 0.619608, 1)
+sky_horizon_color = Color(0.654902, 0.678431, 0.686275, 1)
+ground_horizon_color = Color(0.654902, 0.678431, 0.686275, 1)
+
+[sub_resource type="Sky" id="Sky_x0h6m"]
+sky_material = SubResource("ProceduralSkyMaterial_j64ln")
+
+[sub_resource type="Environment" id="Environment_ac4c4"]
+background_mode = 2
+sky = SubResource("Sky_x0h6m")
+tonemap_mode = 2
+ssr_enabled = true
+ssao_enabled = true
+ssao_radius = 1.5
+ssao_intensity = 0.6
+ssao_power = 32.7
+ssil_enabled = true
+glow_enabled = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_klsna"]
+albedo_texture = ExtResource("7_3vb4i")
+uv1_triplanar = true
+uv1_world_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ejtrp"]
+albedo_texture = ExtResource("7_3vb4i")
+uv1_triplanar = true
+uv1_world_triplanar = true
+
+[node name="Node3D" type="Node3D"]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+mesh = SubResource("BoxMesh_da1fv")
+surface_material_override/0 = SubResource("StandardMaterial3D_i3f36")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("BoxShape3D_sjrol")
+
+[node name="MonterBaseCar" parent="." instance=ExtResource("1_g5607")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.09078, 0)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_ac4c4")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.958382, 0.150897, 0.242349, -0.221166, -0.144353, 0.964493, 0.180523, -0.977953, -0.104972, 0, 9.14761, -17.4889)
+shadow_enabled = true
+directional_shadow_max_distance = 200.0
+
+[node name="scene" type="Node3D" parent="."]
+
+[node name="round piller" type="Node3D" parent="scene"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.9992, 0, 1.86198)
+
+[node name="CSGMesh3D" parent="scene/round piller" instance=ExtResource("3_uwlmg")]
+transform = Transform3D(0.00436336, 0.99999, 1.48618e-08, 0, -4.37114e-08, 0.34, 0.99999, -0.00436336, -6.48466e-11, -1.30238, 0.497297, -5.24751)
+use_collision = true
+
+[node name="CSGMesh3D2" parent="scene/round piller" instance=ExtResource("3_uwlmg")]
+transform = Transform3D(0.00436336, 0.99999, 1.48618e-08, 0, -4.37114e-08, 0.34, 0.99999, -0.00436336, -6.48466e-11, -1.30238, 0.497297, -7.31763)
+use_collision = true
+
+[node name="CSGMesh3D3" parent="scene/round piller" instance=ExtResource("3_uwlmg")]
+transform = Transform3D(0.00436336, 0.99999, 1.48618e-08, 0, -4.37114e-08, 0.34, 0.99999, -0.00436336, -6.48466e-11, -1.30238, 0.497297, -9.77288)
+use_collision = true
+
+[node name="CSGMesh3D4" parent="scene/round piller" instance=ExtResource("3_uwlmg")]
+transform = Transform3D(0.00436336, 0.99999, 1.48618e-08, 0, -4.37114e-08, 0.34, 0.99999, -0.00436336, -6.48466e-11, -1.30238, 0.497297, -12.3244)
+use_collision = true
+
+[node name="CSGMesh3D5" parent="scene/round piller" instance=ExtResource("3_uwlmg")]
+transform = Transform3D(0.00436336, 0.99999, 1.48618e-08, 0, -4.37114e-08, 0.34, 0.99999, -0.00436336, -6.48466e-11, -1.30238, 0.497297, -14.6834)
+use_collision = true
+
+[node name="CSGMesh3D6" parent="scene/round piller" instance=ExtResource("3_uwlmg")]
+transform = Transform3D(0.00436336, 0.99999, 1.48618e-08, 0, -4.37114e-08, 0.34, 0.99999, -0.00436336, -6.48466e-11, -1.30238, 0.497297, -17.3794)
+use_collision = true
+
+[node name="cone" type="Node3D" parent="scene"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.59588, 0, 11.1719)
+
+[node name="CSGMesh3D" parent="scene/cone" instance=ExtResource("4_a5h5x")]
+transform = Transform3D(-2.79753e-08, -1, 0, 0.64, -4.37114e-08, 0, 0, 0, 1, -13.7905, 0.534414, -1.43315)
+use_collision = true
+
+[node name="CSGMesh3D2" parent="scene/cone" instance=ExtResource("4_a5h5x")]
+transform = Transform3D(2.78009e-08, 0.993768, -0.111469, 0.64, -4.37114e-08, 0, -3.11838e-09, -0.111469, -0.993768, -13.8829, 0.534414, -5.03982)
+use_collision = true
+
+[node name="CSGMesh3D3" parent="scene/cone" instance=ExtResource("4_a5h5x")]
+transform = Transform3D(-2.72692e-08, -0.974761, 0.22325, 0.64, -4.37114e-08, 0, 6.24549e-09, 0.22325, 0.974761, -14.0679, 0.534414, -8.46153)
+use_collision = true
+
+[node name="CSGMesh3D4" parent="scene/cone" instance=ExtResource("4_a5h5x")]
+transform = Transform3D(2.64031e-08, 0.943801, -0.330514, 0.64, -4.37114e-08, 0, -9.24624e-09, -0.330514, -0.943801, -15.1776, 0.534414, -11.9757)
+use_collision = true
+
+[node name="CSGMesh3D5" parent="scene/cone" instance=ExtResource("4_a5h5x")]
+transform = Transform3D(-2.52079e-08, -0.901077, 0.433659, 0.64, -4.37114e-08, 0, 1.21317e-08, 0.433659, 0.901077, -16.5648, 0.534414, -15.6749)
+use_collision = true
+
+[node name="CSGMesh3D6" parent="scene/cone" instance=ExtResource("4_a5h5x")]
+transform = Transform3D(2.36985e-08, 0.847122, -0.531399, 0.64, -4.37114e-08, 0, -1.4866e-08, -0.531399, -0.847122, -18.4144, 0.534414, -19.0966)
+use_collision = true
+
+[node name="CSGMesh3D7" parent="scene/cone" instance=ExtResource("4_a5h5x")]
+transform = Transform3D(-2.18633e-08, -0.78152, 0.62388, 0.64, -4.37114e-08, 0, 1.74532e-08, 0.62388, 0.78152, -21.0963, 0.534414, -22.8882)
+use_collision = true
+
+[node name="CSGMesh3D8" parent="scene/cone" instance=ExtResource("4_a5h5x")]
+transform = Transform3D(1.97815e-08, 0.707107, -0.707107, 0.64, -4.37114e-08, 0, -1.97815e-08, -0.707107, -0.707107, -24.2406, 0.534414, -25.7551)
+use_collision = true
+
+[node name="CSGMesh3D9" parent="scene/cone" instance=ExtResource("4_a5h5x")]
+transform = Transform3D(-1.46179e-08, -0.522528, 0.852622, 0.64, -4.37114e-08, 1.60063e-15, 2.38523e-08, 0.852622, 0.522528, -28.4159, 0.534414, -28.5532)
+use_collision = true
+
+[node name="CSGMesh3D10" parent="scene/cone" instance=ExtResource("4_a5h5x")]
+transform = Transform3D(1.1868e-08, 0.424231, -0.905554, 0.64, -4.37114e-08, -1.50479e-15, -2.53331e-08, -0.905554, -0.424231, -31.8241, 0.534414, -30.4276)
+use_collision = true
+
+[node name="CSGMesh3D11" parent="scene/cone" instance=ExtResource("4_a5h5x")]
+transform = Transform3D(-8.9239e-09, -0.318992, 0.947757, 0.64, -4.37114e-08, 1.38826e-15, 2.65138e-08, 0.947757, 0.318992, -36.1323, 0.534414, -32.1621)
+use_collision = true
+
+[node name="CSGMesh3D12" parent="scene/cone" instance=ExtResource("4_a5h5x")]
+transform = Transform3D(5.91283e-09, 0.211359, -0.977408, 0.64, -4.37114e-08, 0, -2.73433e-08, -0.977408, -0.211359, -40.3283, 0.534414, -32.8687)
+use_collision = true
+
+[node name="stones" type="Node3D" parent="scene"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.4471, 0, 53.9974)
+
+[node name="CSGSphere3D" parent="scene/stones" instance=ExtResource("5_i08ds")]
+transform = Transform3D(1.11, 0, 0, 0, 0.783, 0, 0, 0, 1.11, -4.63949, -0.0373975, 5.47197)
+use_collision = true
+radius = 1.5
+
+[node name="CSGSphere3D6" parent="scene/stones" instance=ExtResource("5_i08ds")]
+transform = Transform3D(1.11, 0, 0, 0, 0.783, 0, 0, 0, 1.11, -18.4351, -0.0373975, 5.10693)
+use_collision = true
+radius = 1.5
+
+[node name="CSGSphere3D23" parent="scene/stones" instance=ExtResource("5_i08ds")]
+transform = Transform3D(1.11, 0, 0, 0, 0.783, 0, 0, 0, 1.11, -13.211, -0.0373975, 9.05062)
+use_collision = true
+radius = 1.5
+
+[node name="CSGSphere3D2" parent="scene/stones" instance=ExtResource("5_i08ds")]
+transform = Transform3D(1.11, 0, 0, 0, 0.783, 0, 0, 0, 1.11, -8.36458, 0.162857, 3.81541)
+use_collision = true
+radius = 1.0
+
+[node name="CSGSphere3D7" parent="scene/stones" instance=ExtResource("5_i08ds")]
+transform = Transform3D(1.11, 0, 0, 0, 0.783, 0, 0, 0, 1.11, -8.47155, 0.162857, 12.0396)
+use_collision = true
+radius = 1.0
+
+[node name="CSGSphere3D5" parent="scene/stones" instance=ExtResource("5_i08ds")]
+transform = Transform3D(1.11, 0, 0, 0, 0.783, 0, 0, 0, 1.11, -9.30871, 0.162857, 7.02457)
+use_collision = true
+radius = 0.7
+
+[node name="CSGSphere3D9" parent="scene/stones" instance=ExtResource("5_i08ds")]
+transform = Transform3D(1.11, 0, 0, 0, 0.783, 0, 0, 0, 1.11, -7.33472, 0.162857, 6.82809)
+use_collision = true
+radius = 0.7
+
+[node name="CSGSphere3D10" parent="scene/stones" instance=ExtResource("5_i08ds")]
+transform = Transform3D(1.11, 0, 0, 0, 0.783, 0, 0, 0, 1.11, -12.0519, 0.162857, 5.25958)
+use_collision = true
+radius = 0.7
+
+[node name="CSGSphere3D11" parent="scene/stones" instance=ExtResource("5_i08ds")]
+transform = Transform3D(1.11, 0, 0, 0, 0.783, 0, 0, 0, 1.11, -15.4488, 0.162857, 6.8434)
+use_collision = true
+radius = 0.7
+
+[node name="CSGSphere3D4" parent="scene/stones" instance=ExtResource("5_i08ds")]
+transform = Transform3D(1.11, 0, 0, 0, 0.783, 0, 0, 0, 1.11, -17.4271, 0.162857, 9.85254)
+use_collision = true
+radius = 1.0
+
+[node name="CSGSphere3D20" parent="scene/stones" instance=ExtResource("5_i08ds")]
+transform = Transform3D(1.11, 0, 0, 0, 0.783, 0, 0, 0, 1.11, -14.1682, 0.162857, 5.92829)
+use_collision = true
+radius = 1.0
+
+[node name="CSGSphere3D21" parent="scene/stones" instance=ExtResource("5_i08ds")]
+transform = Transform3D(1.11, 0, 0, 0, 0.783, 0, 0, 0, 1.11, -2.53798, 0.162857, 9.02162)
+use_collision = true
+radius = 1.0
+
+[node name="CSGSphere3D22" parent="scene/stones" instance=ExtResource("5_i08ds")]
+transform = Transform3D(1.11, 0, 0, 0, 0.783, 0, 0, 0, 1.11, -6.795, 0.162857, 10.5512)
+use_collision = true
+radius = 1.0
+
+[node name="CSGSphere3D3" parent="scene/stones" instance=ExtResource("5_i08ds")]
+transform = Transform3D(1.11, 0, 0, 0, 0.783, 0, 0, 0, 1.11, -8.13936, 0.377534, 8.77561)
+use_collision = true
+radius = 0.3
+
+[node name="CSGSphere3D12" parent="scene/stones" instance=ExtResource("5_i08ds")]
+transform = Transform3D(1.11, 0, 0, 0, 0.783, 0, 0, 0, 1.11, -5.88871, 0.377534, 8.7762)
+use_collision = true
+radius = 0.3
+
+[node name="CSGSphere3D13" parent="scene/stones" instance=ExtResource("5_i08ds")]
+transform = Transform3D(1.11, 0, 0, 0, 0.783, 0, 0, 0, 1.11, -11.2721, 0.377534, 7.01617)
+use_collision = true
+radius = 0.3
+
+[node name="CSGSphere3D14" parent="scene/stones" instance=ExtResource("5_i08ds")]
+transform = Transform3D(1.365, 0, 0, 0, 0.962, 0, 0, 0, 1.365, -3.72097, 0.377534, 9.91197)
+use_collision = true
+radius = 0.3
+
+[node name="CSGSphere3D15" parent="scene/stones" instance=ExtResource("5_i08ds")]
+transform = Transform3D(1.365, 0, 0, 0, 0.962, 0, 0, 0, 1.365, -4.61284, 0.377534, 7.78842)
+use_collision = true
+radius = 0.3
+
+[node name="CSGSphere3D8" parent="scene/stones" instance=ExtResource("5_i08ds")]
+transform = Transform3D(1.365, 0, 0, 0, 0.962, 0, 0, 0, 1.365, -10.0422, 0.377534, 10.6065)
+use_collision = true
+radius = 0.3
+
+[node name="CSGSphere3D16" parent="scene/stones" instance=ExtResource("5_i08ds")]
+transform = Transform3D(1.365, 0, 0, 0, 0.962, 0, 0, 0, 1.365, -9.44894, 0.377534, 5.80502)
+use_collision = true
+radius = 0.3
+
+[node name="CSGSphere3D17" parent="scene/stones" instance=ExtResource("5_i08ds")]
+transform = Transform3D(1.29, 0, 0, 0, 0.909, 0, 0, 0, 1.29, -15.3989, 0.377534, 8.85831)
+use_collision = true
+radius = 0.3
+
+[node name="CSGSphere3D18" parent="scene/stones" instance=ExtResource("5_i08ds")]
+transform = Transform3D(1.29, 0, 0, 0, 0.909, 0, 0, 0, 1.29, -14.4161, 0.377534, 10.7018)
+use_collision = true
+radius = 0.3
+
+[node name="CSGSphere3D19" parent="scene/stones" instance=ExtResource("5_i08ds")]
+transform = Transform3D(1.29, 0, 0, 0, 0.909, 0, 0, 0, 1.29, -12.4253, 0.377534, 11.8649)
+use_collision = true
+radius = 0.3
+
+[node name="stage" type="Node3D" parent="scene"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -55.1321, 0, 52.906)
+
+[node name="CSGMesh3D" parent="scene/stage" instance=ExtResource("6_33dec")]
+transform = Transform3D(3.455, 0, 0, 0, 1.34, 0, 0, 0, 1, 0, 3.16961, 4.30915)
+use_collision = true
+
+[node name="CSGMesh3D2" parent="scene/stage" instance=ExtResource("6_33dec")]
+transform = Transform3D(3.455, 0, 0, 0, 1.25919, -0.34202, 0, 0.458307, 0.939693, 0, -1.76725, 32.3366)
+use_collision = true
+material = SubResource("StandardMaterial3D_klsna")
+
+[node name="CSGMesh3D3" parent="scene/stage" instance=ExtResource("6_33dec")]
+transform = Transform3D(-3.455, 6.92024e-08, 1.4189e-07, 0, 1.25919, -0.34202, -5.2169e-07, -0.458307, -0.939693, 0, -1.76725, -23.7143)
+use_collision = true
+material = SubResource("StandardMaterial3D_klsna")
+
+[node name="CSGMesh3D4" parent="scene/stage" instance=ExtResource("6_33dec")]
+transform = Transform3D(-1.51023e-07, -0.458307, -0.939693, 0, 1.25919, -0.34202, 3.455, -2.00332e-08, -4.10753e-08, -28.0255, -1.76725, 4.31114)
+use_collision = true
+material = SubResource("StandardMaterial3D_klsna")
+
+[node name="CSGMesh3D5" parent="scene/stage" instance=ExtResource("6_33dec")]
+transform = Transform3D(2.60845e-07, 0.458307, 0.939693, 0, 1.25919, -0.34202, -3.455, 3.46012e-08, 7.09448e-08, 28.0255, -1.76725, 4.31114)
+use_collision = true
+material = SubResource("StandardMaterial3D_ejtrp")
+
+[node name="slant block" type="Node3D" parent="scene"]
+transform = Transform3D(0.622952, 0, 0.78226, 0, 1, 0, -0.78226, 0, 0.622952, 22.8856, 0, -56.7392)
+
+[node name="CSGMesh3D6" parent="scene/slant block" instance=ExtResource("6_33dec")]
+transform = Transform3D(8.58558, 0.342504, 0, -3.22129, 0.912861, 0, 0, 0, 1, 0, 10.6968, -0.56945)
+use_collision = true
+
+[node name="two lane" type="Node3D" parent="scene"]
+transform = Transform3D(0.755956, 0, -0.654622, 0, 1, 0, 0.654622, 0, 0.755956, -0.678467, 0, 66.7014)
+
+[node name="CSGMesh3D6" parent="scene/two lane" instance=ExtResource("6_33dec")]
+transform = Transform3D(0.125, 0, 0, 0, 0.22, 0, 0, 0, 1, -1.18241, 4.34545, -53.7992)
+use_collision = true
+
+[node name="CSGMesh3D7" parent="scene/two lane" instance=ExtResource("6_33dec")]
+transform = Transform3D(0.125, 0, 0, 0, 0.22, 0, 0, 0, 1, 1.37383, 4.34545, -53.7992)
+use_collision = true
+
+[node name="CSGMesh3D8" parent="scene/two lane" instance=ExtResource("6_33dec")]
+transform = Transform3D(0.125, 0, 0, 0, 0.191268, -0.249525, 0, 0.108704, 0.439047, -1.18241, 3.06319, -33.3363)
+use_collision = true
+
+[node name="CSGMesh3D9" parent="scene/two lane" instance=ExtResource("6_33dec")]
+transform = Transform3D(0.125, 0, 0, 0, 0.191268, -0.249525, 0, 0.108704, 0.439047, 1.37383, 3.06319, -33.3363)
+use_collision = true
+
+[node name="co1" type="Node3D" parent="scene"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 63.7472, 7.10309, 77.4229)
+
+[node name="CSGCombiner3D" parent="scene/co1" instance=ExtResource("7_q7uvy")]
+use_collision = true
+
+[node name="co2" type="Node3D" parent="scene"]
+transform = Transform3D(0.811156, 0, -0.58483, 0, 1, 0, 0.58483, 0, 0.811156, -63.8549, 8.99725, -71.3981)
+
+[node name="CSGCombiner3D" parent="scene/co2" instance=ExtResource("8_aafxv")]
+use_collision = true
+
+[node name="co3" type="Node3D" parent="scene"]
+transform = Transform3D(0.726551, 0, 0.687113, 0, 1, 0, -0.687113, 0, 0.726551, 57.4628, 8.99725, -18.9023)
+
+[node name="CSGCombiner3D" parent="scene/co3" instance=ExtResource("8_aafxv")]
+use_collision = true
+
+[node name="random stick" type="Node3D" parent="scene"]
+
+[node name="CSGMesh3D" parent="scene/random stick" instance=ExtResource("6_33dec")]
+transform = Transform3D(0.0340264, 0, 0.575701, 0, 0.155, 0, -0.277925, 0, 0.0704832, -74.2704, 0.545033, 4.79928)
+use_collision = true
+
+[node name="CSGMesh3D2" parent="scene/random stick" instance=ExtResource("6_33dec")]
+transform = Transform3D(0.119647, 0, 0.524381, 0, 0.155, 0, -0.253149, 0, 0.24784, -78.1914, 0.545033, -2.06246)
+use_collision = true
+
+[node name="CSGMesh3D3" parent="scene/random stick" instance=ExtResource("6_33dec")]
+transform = Transform3D(-0.137274, 0, 0.505513, 0, 0.155, 0, -0.244041, 0, -0.284354, -69.3692, 0.545033, -9.65939)
+use_collision = true
+
+[node name="CSGMesh3D4" parent="scene/random stick" instance=ExtResource("6_33dec")]
+transform = Transform3D(-0.116918, 0, 0.527015, 0, 0.155, 0, -0.254421, 0, -0.242188, -78.1914, 0.545033, -14.8057)
+use_collision = true
+
+[node name="CSGMesh3D5" parent="scene/random stick" instance=ExtResource("6_33dec")]
+transform = Transform3D(-1.22392e-08, 0, 0.58, 0, 0.155, 0, -0.28, 0, -2.53526e-08, -72.3099, 0.545033, -13.3353)
+use_collision = true
+
+[node name="CSGMesh3D6" parent="scene/random stick" instance=ExtResource("6_33dec")]
+transform = Transform3D(-0.259536, 0, 0.217657, 0, 0.155, 0, -0.105076, 0, -0.537611, -64.713, 0.545033, -4.75814)
+use_collision = true
+
+[node name="CSGMesh3D7" parent="scene/random stick" instance=ExtResource("6_33dec")]
+transform = Transform3D(-0.259536, 0, 0.217657, 0, 0.155, 0, -0.105076, 0, -0.537611, -87.5038, 0.545033, -21.1773)
+use_collision = true
+
+[node name="CSGMesh3D8" parent="scene/random stick" instance=ExtResource("6_33dec")]
+transform = Transform3D(-0.173611, 0, -0.455051, 0, 0.155, 0, 0.21968, 0, -0.359623, -66.6735, 0.545033, -22.4026)
+use_collision = true
+
+[node name="CSGMesh3D9" parent="scene/random stick" instance=ExtResource("6_33dec")]
+transform = Transform3D(-0.173611, 0, -0.455051, 0, 0.155, 0, 0.21968, 0, -0.359623, -87.2587, 0.545033, 4.30915)
+use_collision = true
+
+[node name="corners" type="Node3D" parent="scene"]
+
+[node name="CSGMesh3D" parent="scene/corners" instance=ExtResource("6_33dec")]
+transform = Transform3D(0.2, 0, 0, 0, 3, 0, 0, 0, 6.725, 100.491, 6.95825, -0.232231)
+use_collision = true
+
+[node name="CSGMesh3D2" parent="scene/corners" instance=ExtResource("6_33dec")]
+transform = Transform3D(0.2, 0, 0, 0, 3, 0, 0, 0, 6.725, -100.244, 6.95825, -0.232231)
+use_collision = true
+
+[node name="CSGMesh3D3" parent="scene/corners" instance=ExtResource("6_33dec")]
+transform = Transform3D(-8.74228e-09, 0, -6.725, 0, 3, 0, 0.2, 0, -2.93959e-07, 0.123607, 6.95825, 100.136)
+use_collision = true
+
+[node name="CSGMesh3D4" parent="scene/corners" instance=ExtResource("6_33dec")]
+transform = Transform3D(-8.74228e-09, 0, -6.725, 0, 3, 0, 0.2, 0, -2.93959e-07, 0.123616, 6.95825, -100.6)
+use_collision = true
+
+[node name="CameraRig" parent="." instance=ExtResource("10_renaw")]
+_camTarget = NodePath("../MonterBaseCar")

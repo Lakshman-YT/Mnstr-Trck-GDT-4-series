@@ -1,0 +1,34 @@
+[gd_scene load_steps=7 format=3 uid="uid://c4axagm62l0uu"]
+
+[ext_resource type="Texture2D" uid="uid://cwmsymy5s7fl7" path="res://Env textures/ground/blue.jpg" id="1_nqsd8"]
+[ext_resource type="Texture2D" uid="uid://djac0ucqhhl1b" path="res://Env textures/ground/black.jpg" id="2_q1ukg"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_0ymcn"]
+size = Vector3(35, 15, 40)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m5t60"]
+albedo_texture = ExtResource("1_nqsd8")
+uv1_triplanar = true
+uv1_world_triplanar = true
+
+[sub_resource type="SphereMesh" id="SphereMesh_4h4uu"]
+height = 0.8
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dag4j"]
+albedo_texture = ExtResource("2_q1ukg")
+uv1_triplanar = true
+uv1_world_triplanar = true
+
+[node name="CSGCombiner3D" type="CSGCombiner3D"]
+operation = 1
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.92834, -0.115845, 1.07454)
+mesh = SubResource("BoxMesh_0ymcn")
+material = SubResource("StandardMaterial3D_m5t60")
+
+[node name="CSGMesh3D2" type="CSGMesh3D" parent="."]
+transform = Transform3D(39.14, 0, 0, 0, 39.14, 0, 0, 0, 39.14, 8.32937, 1.67168, 0.985672)
+operation = 2
+mesh = SubResource("SphereMesh_4h4uu")
+material = SubResource("StandardMaterial3D_dag4j")

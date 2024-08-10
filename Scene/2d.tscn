@@ -1,0 +1,72 @@
+[gd_scene load_steps=5 format=3 uid="uid://bffhkyo5ry8e0"]
+
+[ext_resource type="Texture2D" uid="uid://doptch7somc1v" path="res://textures/hello.png" id="1_fsjns"]
+[ext_resource type="Texture2D" uid="uid://bdbydy3lft5fo" path="res://textures/arrow.png" id="2_chmpw"]
+[ext_resource type="Texture2D" uid="uid://t8a01humcrjc" path="res://textures/monster-sketchup-topas.png" id="3_ckxds"]
+[ext_resource type="Texture2D" uid="uid://dxwnvvgoy3db8" path="res://textures/monster-sketchup-top.png" id="4_dtc0m"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="Sprite2D" type="Sprite2D" parent="HBoxContainer"]
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("1_fsjns")
+centered = false
+offset = Vector2(-800, -650)
+
+[node name="arrow2" type="Label" parent="HBoxContainer/Sprite2D"]
+offset_left = -551.085
+offset_top = -304.74
+offset_right = -446.085
+offset_bottom = -220.74
+theme_override_font_sizes/font_size = 50
+text = "125"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="arrow" type="Sprite2D" parent="HBoxContainer/Sprite2D"]
+position = Vector2(-500.728, -340)
+rotation = 1.65108
+texture = ExtResource("2_chmpw")
+offset = Vector2(0, -80)
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 14.0
+offset_top = -176.0
+offset_right = 270.0
+offset_bottom = 141.0
+grow_vertical = 0
+scale = Vector2(0.5, 0.5)
+value = 100.0
+fill_mode = 3
+stretch_margin_left = 670
+texture_under = ExtResource("3_ckxds")
+texture_progress = ExtResource("4_dtc0m")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = " W/A/S/D - Move
+ Space - loose break
+ T - Free Hinge
+ LeftCtrl / LeftAlt - Rotate UP/Down "

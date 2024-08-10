@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://bjewdbi5nmyy5"]
+
+[ext_resource type="Texture2D" uid="uid://b8ry25kjl4r66" path="res://Env textures/ground/orange.jpg" id="1_jtcmp"]
+[ext_resource type="Texture2D" uid="uid://djac0ucqhhl1b" path="res://Env textures/ground/black.jpg" id="2_vqpe5"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1mvby"]
+albedo_texture = ExtResource("1_jtcmp")
+uv1_triplanar = true
+uv1_world_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w6uj1"]
+albedo_texture = ExtResource("2_vqpe5")
+uv1_triplanar = true
+uv1_world_triplanar = true
+
+[node name="CSGCombiner3D" type="CSGCombiner3D"]
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
+radius = 10.6658
+height = 12.5575
+sides = 64
+material = SubResource("StandardMaterial3D_1mvby")
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, -0.298033, 0)
+operation = 2
+radius = 9.69982
+height = 26.8903
+sides = 64
+material = SubResource("StandardMaterial3D_w6uj1")
