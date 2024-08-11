@@ -22,7 +22,9 @@ To see a demonstration of the project, view the images below:
 ## Watch, Like, and Share
 If you found this series helpful, please consider watching our full series on YouTube. Don't forget to **like, share, and subscribe** to support our work!
 
-[![YouTube Video](https://www.dropbox.com/scl/fi/d4i867l00kva9l0xitdmu/Monster_truck_github.mp4?raw=1)](https://www.dropbox.com/scl/fi/d4i867l00kva9l0xitdmu/Monster_truck_github.mp4?rlkey=16cagq7s0s19lvm4iq2l8qoxy&st=ivic758z&dl=0)
+<a href="https://youtu.be/oT26ToDd35Q">
+    <img src="https://github.com/Lakshman-YT/Mnstr-Trck-GDT-4-series/blob/main/Images/thunbnail.jpg" alt="YouTube Video" width="400" height="225">
+</a> YouTube video
 
 ## Show Your Support
 If you enjoyed this series, please consider giving the repository a **star** on GitHub. Your support helps us create more content like this!
