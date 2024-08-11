@@ -24,7 +24,9 @@ This lesson focuses on creating a world environment in Godot using a combination
 ## Watch, Like, and Share
 If you found this tutorial helpful, please consider watching our full series on YouTube. Don't forget to **like, share, and subscribe** to support our work!
 
-[![YouTube Video](https://img.youtube.com/vi/VIDEO_ID/0.jpg)](https://www.youtube.com/watch?v=VIDEO_ID)
+<a href="https://youtu.be/oT26ToDd35Q">
+    <img src="https://github.com/Lakshman-YT/Mnstr-Trck-GDT-4-series/blob/main/Images/thunbnail.jpg" alt="YouTube Video" width="400" height="225">
+</a> YouTube video
 
 ## Show Your Support
 If you enjoyed this lesson, please consider giving the repository a **star** on GitHub. Your support helps us create more content like this!
