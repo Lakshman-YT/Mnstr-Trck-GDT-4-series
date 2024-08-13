@@ -8,5 +8,7 @@ uv1_triplanar = true
 uv1_world_triplanar = true
 
 [node name="CSGSphere3D" type="CSGSphere3D"]
+use_collision = true
+collision_layer = 3
 radius = 0.697151
 material = SubResource("StandardMaterial3D_0j0gk")

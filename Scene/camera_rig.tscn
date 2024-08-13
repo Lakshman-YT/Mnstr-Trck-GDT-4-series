@@ -10,6 +10,7 @@ maxZoom = 8.0
 minZoom = 8.0
 
 [node name="SpringArm" type="SpringArm3D" parent="."]
+collision_mask = 2
 shape = SubResource("SphereShape3D_6m88p")
 
 [node name="Camera3D" type="Camera3D" parent="SpringArm"]

@@ -13,5 +13,7 @@ uv1_world_triplanar = true
 
 [node name="CSGMesh3D" type="CSGMesh3D"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 0.34, 0, -1, -1.48619e-08, 0, 0, 0)
+use_collision = true
+collision_layer = 3
 mesh = SubResource("CylinderMesh_2p8j8")
 material = SubResource("StandardMaterial3D_ppx2y")
